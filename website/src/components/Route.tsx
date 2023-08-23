@@ -2,6 +2,7 @@ import React from 'react';
 import MarkdownIt from 'markdown-it';
 import Badge from './Badge';
 import Translate from '@docusaurus/Translate';
+import Open from './Open';
 
 export default function Route({
   author = 'DIYgod',
@@ -44,6 +45,13 @@ export default function Route({
 
     return (
         <div className="routeBlock" id={path}>
+            {(() => {
+              if (path === "/bilibili/partion/:tid/:disableEmbed?" || path === "") {
+                return (
+                  <Open href="http://baidu.com"></Open>
+                )
+              }
+            })()}
             <p className="badges">
                 {supportBT && <Badge type="tip"><Translate id="badge.supportBT" /></Badge>}
                 {supportPodcast && <Badge type="tip"><Translate id="badge.supportPodcast" /></Badge>}
